@@ -137,7 +137,7 @@ footer{text-align:center;color:#56657a;font-size:12px;margin-top:34px}
   </div>
 </article>
 </div></section>
-<section class="section" id="compras"><div class="section-head"><div><h2>Lista de compras</h2><p>Use + e − para registrar quantas cópias já comprou.</p></div></div><div class="card-grid">
+<section class="section" id="compras"><div class="section-head"><div><h2>Lista de compras</h2><p>Use + e − para registrar quantas cópias já comprou.</p></div></div><button type="button" class="copy-btn" onclick="copyShoppingList(this)" aria-live="polite">Copiar compras unificadas</button><p style="color:var(--muted);font-size:12px;margin:0 0 14px">Copia apenas o que falta comprar, somando cartas iguais da mesma edição dos dois decks.</p><div class="card-grid">
 <article class="card buy-card">
   <header class="card-header">
     <div><h3>Zoroark ex do N</h3><span class="badge buy">COMPRAS</span></div>
@@ -197,6 +197,55 @@ function copyLiveDeck(id,btn){
   navigator.clipboard.writeText(LIVE_DECKS[id]||"");
   const old=btn.textContent; btn.textContent="Copiado ✓";
   setTimeout(()=>btn.textContent=old,1200);
+}
+function buildShoppingList(){
+  const cards=new Map();
+  document.querySelectorAll(".buy-row").forEach(row=>{
+    const need=Number(row.dataset.need);
+    const saved=Number(localStorage.getItem("pokemonTCG_buy_"+row.dataset.key)||0);
+    const have=Number.isFinite(saved)?Math.max(0,Math.min(need,saved)):0;
+    const remaining=need-have;
+    if(remaining<=0) return;
+    const code=row.querySelector(".meta").textContent.split("·")[0].trim();
+    const name=row.querySelector(".name").textContent.trim();
+    if(cards.has(code)) cards.get(code).quantity+=remaining;
+    else cards.set(code,{name,code,quantity:remaining});
+  });
+  return Array.from(cards.values(),card=>`${card.quantity} ${card.name} ${card.code}`).join("\n");
+}
+async function copyShoppingList(btn){
+  const old=btn.textContent;
+  const text=buildShoppingList();
+  if(!text){
+    btn.textContent="Tudo comprado ✓";
+    btn.disabled=true;
+    setTimeout(()=>{btn.textContent=old;btn.disabled=false;},1600);
+    return;
+  }
+  btn.disabled=true;
+  try{
+    let copied=false;
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      try{await navigator.clipboard.writeText(text);copied=true;}catch(error){}
+    }
+    if(!copied){
+      const field=document.createElement("textarea");
+      field.value=text;
+      field.setAttribute("readonly","");
+      field.style.cssText="position:fixed;top:0;left:0;opacity:0";
+      document.body.appendChild(field);
+      try{
+        field.select();
+        if(!document.execCommand("copy")) throw new Error("Falha ao copiar");
+      }finally{field.remove();btn.focus();}
+    }
+    btn.textContent="Compras copiadas ✓";
+  }catch(error){
+    btn.textContent="Não foi possível copiar";
+    window.prompt("Copie a lista de compras abaixo:",text);
+  }finally{
+    setTimeout(()=>{btn.textContent=old;btn.disabled=false;},1600);
+  }
 }
 function renderBuyRow(row){
   const need=Number(row.dataset.need);
