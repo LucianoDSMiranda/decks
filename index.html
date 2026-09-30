@@ -137,7 +137,7 @@ footer{text-align:center;color:#56657a;font-size:12px;margin-top:34px}
   </div>
 </article>
 </div></section>
-<section class="section" id="compras"><div class="section-head"><div><h2>Lista de compras</h2><p>Use + e − para registrar quantas cópias já comprou.</p></div></div><button type="button" class="copy-btn" onclick="copyShoppingList(this)" aria-live="polite">Copiar compras unificadas</button><p style="color:var(--muted);font-size:12px;margin:0 0 14px">Copia apenas o que falta comprar, somando cartas iguais da mesma edição dos dois decks.</p><div class="card-grid">
+<section class="section" id="compras"><div class="section-head"><div><h2>Lista de compras</h2><p>Use + e − para registrar quantas cópias já comprou.</p></div></div><div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px"><button type="button" class="copy-btn" style="width:auto;margin:0" onclick="downloadPurchaseBackup()">Baixar backup das compras</button><button type="button" class="copy-btn" style="width:auto;margin:0" onclick="document.getElementById('purchase-backup-file').click()">Restaurar backup</button><input type="file" id="purchase-backup-file" accept="application/json,.json" hidden onchange="restorePurchaseBackup(this)"></div><p id="purchase-save-status" role="status" style="color:var(--muted);font-size:12px;margin:0 0 14px"></p><button type="button" class="copy-btn" onclick="copyShoppingList(this)" aria-live="polite">Copiar compras unificadas</button><p style="color:var(--muted);font-size:12px;margin:0 0 14px">Copia apenas o que falta comprar, somando cartas iguais da mesma edição dos dois decks.</p><div class="card-grid">
 <article class="card buy-card">
   <header class="card-header">
     <div><h3>Zoroark ex do N</h3><span class="badge buy">COMPRAS</span></div>
@@ -188,7 +188,7 @@ footer{text-align:center;color:#56657a;font-size:12px;margin-top:34px}
 </article>
 </div></section>
 
-<div class="note">Os links das cartas abrem a edição correspondente no Limitless TCG. O progresso das compras é salvo neste navegador usando localStorage.</div>
+<div class="note">Os links das cartas abrem a edição correspondente no Limitless TCG. As compras são salvas automaticamente neste navegador e neste endereço, inclusive após atualizações do site. Para trocar de navegador ou endereço, baixe um backup e restaure-o no novo local.</div>
 <footer>Painel pessoal de decks Pokémon TCG</footer>
 </main>
 <script>
@@ -247,6 +247,60 @@ async function copyShoppingList(btn){
     setTimeout(()=>{btn.textContent=old;btn.disabled=false;},1600);
   }
 }
+// Preserve this prefix and each data-key when updating deck names or layout.
+const PURCHASE_PREFIX="pokemonTCG_buy_";
+function purchaseStatus(message){
+  document.getElementById("purchase-save-status").textContent=message;
+}
+function downloadPurchaseBackup(){
+  try{
+    const purchases={};
+    for(let i=0;i<localStorage.length;i++){
+      const key=localStorage.key(i);
+      if(!key || !key.startsWith(PURCHASE_PREFIX)) continue;
+      const value=Number(localStorage.getItem(key));
+      if(!Number.isSafeInteger(value) || value<0) throw new Error("Dados inválidos");
+      purchases[key]=value;
+    }
+    const backup={app:"pokemon-tcg-decks",version:1,exportedAt:new Date().toISOString(),purchases};
+    const url=URL.createObjectURL(new Blob([JSON.stringify(backup,null,2)],{type:"application/json"}));
+    const link=document.createElement("a");
+    link.href=url;
+    link.download="compras-pokemon-"+new Date().toISOString().slice(0,10)+".json";
+    document.body.appendChild(link);
+    link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+    purchaseStatus("Backup gerado. Guarde o arquivo para recuperar suas compras em outro navegador ou endereço.");
+  }catch(error){
+    purchaseStatus("Não foi possível gerar o backup. Verifique se o navegador permite salvar dados deste site.");
+  }
+}
+function validatePurchaseBackup(backup){
+  if(!backup || backup.app!=="pokemon-tcg-decks" || backup.version!==1 ||
+     !backup.purchases || typeof backup.purchases!=="object" || Array.isArray(backup.purchases)){
+    throw new Error("Backup inválido");
+  }
+  const entries=Object.entries(backup.purchases);
+  if(entries.some(([key,value])=>!/^pokemonTCG_buy_[a-zA-Z0-9_-]+$/.test(key) ||
+     !Number.isSafeInteger(value) || value<0)) throw new Error("Backup inválido");
+  return entries;
+}
+async function restorePurchaseBackup(input){
+  const file=input.files[0];
+  if(!file) return;
+  try{
+    const entries=validatePurchaseBackup(JSON.parse(await file.text()));
+    entries.forEach(([key,value])=>{
+      const current=Number(localStorage.getItem(key)||0);
+      localStorage.setItem(key,String(Math.max(Number.isSafeInteger(current)&&current>=0?current:0,value)));
+    });
+    document.querySelectorAll(".buy-row").forEach(renderBuyRow);
+    document.querySelectorAll(".buy-card").forEach(updateBuySummary);
+    purchaseStatus("Backup restaurado. As quantidades já registradas foram preservadas, sem somar compras duplicadas.");
+  }catch(error){
+    purchaseStatus("Não foi possível concluir a restauração. Use um backup de compras deste site e verifique se o navegador permite salvar dados.");
+  }finally{input.value="";}
+}
 function renderBuyRow(row){
   const need=Number(row.dataset.need);
   let have=Number(localStorage.getItem("pokemonTCG_buy_"+row.dataset.key)||0);
@@ -258,7 +312,13 @@ function setBuyQty(btn,delta){
   const row=btn.closest(".buy-row"), need=Number(row.dataset.need);
   let have=Number(localStorage.getItem("pokemonTCG_buy_"+row.dataset.key)||0);
   have=Math.max(0,Math.min(need,have+delta));
-  localStorage.setItem("pokemonTCG_buy_"+row.dataset.key,String(have));
+  try{
+    localStorage.setItem(PURCHASE_PREFIX+row.dataset.key,String(have));
+    purchaseStatus("Compras salvas neste navegador. Você também pode baixar um backup.");
+  }catch(error){
+    purchaseStatus("Esta compra não foi salva. Verifique se o navegador permite salvar dados deste site.");
+    return;
+  }
   renderBuyRow(row); updateBuySummary(row.closest(".buy-card"));
 }
 function updateBuySummary(card){

@@ -19,3 +19,9 @@ O site ficará disponível em um endereço parecido com:
 
 O progresso da lista de compras é salvo no `localStorage` do navegador.
 Isso significa que ele fica salvo naquele navegador/dispositivo.
+
+## Preservação das compras
+
+Atualizações do site devem manter as chaves `pokemonTCG_buy_` e os atributos `data-key` existentes. Não limpar o armazenamento nem renomear essas chaves ao editar nomes ou layout. O progresso já existente é lido diretamente, sem migração ou zeramento.
+
+O salvamento é local ao navegador e ao endereço utilizado. Arquivo local e GitHub Pages não compartilham o mesmo armazenamento. Use **Baixar backup das compras** e **Restaurar backup** para transferir os dados ou se proteger contra a limpeza do navegador. A restauração mantém a maior quantidade entre o backup e o registro atual para cada carta/deck, sem duplicar compras, e preserva registros de cartas fora da lista atual. Não há sincronização entre dispositivos.
