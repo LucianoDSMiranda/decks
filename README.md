@@ -17,7 +17,7 @@ O site ficará disponível em um endereço parecido com:
 
 ## Lista de compras editável
 
-A lista começa vazia. Digite o nome da carta, pesquise na Liga Pokémon em outra aba e informe o número completo (ex.: 128/132), quantidade desejada e preço unitário de referência. O preço é opcional, informado pelo usuário e não é atualizado automaticamente. O total pendente considera apenas as cópias ainda não compradas e não inclui frete; cartas sem preço são indicadas à parte.
+A lista inicial contém os 11 itens (15 cartas) solicitados em 02/10/2026. Digite o nome da carta, pesquise na Liga Pokémon em outra aba e informe o número completo (ex.: 128/132), quantidade desejada e preço unitário de referência. O preço é opcional, informado pelo usuário e não é atualizado automaticamente. O total pendente considera apenas as cópias ainda não compradas e não inclui frete; cartas sem preço são indicadas à parte.
 
 É possível editar/remover itens, registrar cópias compradas e copiar as quantidades pendentes. A busca sugere nomes presentes nos decks, mas permite qualquer carta. Os nomes são enviados à Liga somente ao abrir o link de pesquisa.
 
@@ -36,3 +36,7 @@ Os dados ficam no navegador e endereço usados. Arquivo local e GitHub Pages nã
 As listas exibem número/total da coleção (ex.: 128/132). O campo de compras aceita esse formato e o inclui na pesquisa da Liga. Códigos antigos conhecidos, como MEG 128, são convertidos ao carregar ou restaurar; IDs, quantidades, compras e preços são mantidos. Códigos desconhecidos ficam preservados para correção manual. A chave de armazenamento não muda.
 
 O botão Copiar para o Live mantém sigla e número no texto exportado, conforme o formato de importação do jogo. Os links do Limitless também mantêm seus identificadores internos.
+
+## Lista solicitada em 02/10/2026
+
+A revisão 2026-10-02-lista-1 substitui a lista anterior uma única vez em cada navegador. A chave existente armazena agora um objeto com revision e items, gravados juntos; listas antigas em array continuam sendo lidas. Atualizações futuras devem manter a revisão, salvo pedido explícito de substituição. Edições, compras, remoções e até uma lista esvaziada pelo usuário são preservadas nos próximos carregamentos. Os backups continuam usando shoppingItems como array.

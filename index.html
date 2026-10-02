@@ -204,6 +204,9 @@ function copyLiveDeck(id,btn){
 // Stable storage key: never version this key to release UI changes.
 const SHOPPING_KEY='pokemonTCG_shoppingList_v1';
 const LEGACY_PREFIX='pokemonTCG_buy_';
+// Apply this explicitly requested replacement once; keep later user edits on reload.
+const SHOPPING_REVISION='2026-10-02-lista-1';
+const REQUESTED_SHOPPING_ITEMS=[{"id":"lista-20261002-0","name":"Zoroark ex do N","edition":"","quantity":1,"bought":0,"priceCents":null},{"id":"lista-20261002-1","name":"Cyrano","edition":"","quantity":1,"bought":0,"priceCents":null},{"id":"lista-20261002-2","name":"Munkidori","edition":"","quantity":1,"bought":0,"priceCents":null},{"id":"lista-20261002-3","name":"Tatsugiri","edition":"","quantity":1,"bought":0,"priceCents":null},{"id":"lista-20261002-4","name":"Yveltal","edition":"","quantity":1,"bought":0,"priceCents":null},{"id":"lista-20261002-5","name":"Shaymin","edition":"","quantity":1,"bought":0,"priceCents":null},{"id":"lista-20261002-6","name":"Plínio / Crispin","edition":"","quantity":1,"bought":0,"priceCents":null},{"id":"lista-20261002-7","name":"Traquinagem da Acerola","edition":"","quantity":1,"bought":0,"priceCents":null},{"id":"lista-20261002-8","name":"Tomo da Transformação","edition":"","quantity":2,"bought":0,"priceCents":null},{"id":"lista-20261002-9","name":"Martelo Esmagador","edition":"","quantity":2,"bought":0,"priceCents":null},{"id":"lista-20261002-10","name":"Dunsparce","edition":"120/159","quantity":3,"bought":0,"priceCents":null}];
 const CARD_SET_TOTALS={"ASC":217,"CRI":86,"DRI":182,"JTG":159,"MEE":8,"MEG":132,"PBL":84,"PFL":94,"POR":88,"PRE":131,"SCR":142,"SFA":64,"SSP":191,"TEF":162,"TWM":167,"WHT":86};
 function normalizeCardNumber(value){
   const text=value.trim();
@@ -238,7 +241,7 @@ function persistShopping(items){
   if(!shoppingWritable){shopStatus('Não foi possível ler os dados salvos. Baixe um backup antes de tentar restaurar a lista.');return false;}
   try{
     const checked=validShoppingItems(items);
-    localStorage.setItem(SHOPPING_KEY,JSON.stringify(checked));
+    localStorage.setItem(SHOPPING_KEY,JSON.stringify({revision:SHOPPING_REVISION,items:checked}));
     shoppingItems=checked;
     renderShopping();
     shopStatus('Lista salva neste navegador.');
@@ -420,7 +423,18 @@ async function restorePurchaseBackup(input){
 function initShopping(){
   try{
     const stored=localStorage.getItem(SHOPPING_KEY);
-    shoppingItems=stored===null?[]:validShoppingItems(JSON.parse(stored));
+    const parsed=stored===null?null:JSON.parse(stored);
+    const previous=parsed===null?[]:validShoppingItems(Array.isArray(parsed)?parsed:parsed.items);
+    if(parsed && !Array.isArray(parsed) && parsed.revision===SHOPPING_REVISION){
+      shoppingItems=previous;
+    }else{
+      shoppingItems=previous;
+      const next=validShoppingItems(REQUESTED_SHOPPING_ITEMS);
+      // Save data and revision together: a failed save never marks the update applied.
+      localStorage.setItem(SHOPPING_KEY,JSON.stringify({revision:SHOPPING_REVISION,items:next}));
+      shoppingItems=next;
+      shopStatus('Sua nova lista de compras foi carregada: 15 cartas em 11 itens.');
+    }
   }catch(error){shoppingWritable=false;shopStatus('Não foi possível ler a lista salva. Os dados foram mantidos; baixe um backup antes de tentar recuperá-los.');}
   const suggestions=new Set([...document.querySelectorAll('.deck-row .name')].map(node=>node.textContent.trim()));
   const datalist=shopElement('shopping-suggestions');
