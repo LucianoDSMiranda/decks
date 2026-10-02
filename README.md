@@ -17,7 +17,7 @@ O site ficará disponível em um endereço parecido com:
 
 ## Lista de compras editável
 
-A lista começa vazia. Digite o nome da carta, pesquise na Liga Pokémon em outra aba e informe a edição, quantidade desejada e preço unitário de referência. O preço é opcional, informado pelo usuário e não é atualizado automaticamente. O total pendente considera apenas as cópias ainda não compradas e não inclui frete; cartas sem preço são indicadas à parte.
+A lista começa vazia. Digite o nome da carta, pesquise na Liga Pokémon em outra aba e informe o número completo (ex.: 128/132), quantidade desejada e preço unitário de referência. O preço é opcional, informado pelo usuário e não é atualizado automaticamente. O total pendente considera apenas as cópias ainda não compradas e não inclui frete; cartas sem preço são indicadas à parte.
 
 É possível editar/remover itens, registrar cópias compradas e copiar as quantidades pendentes. A busca sugere nomes presentes nos decks, mas permite qualquer carta. Os nomes são enviados à Liga somente ao abrir o link de pesquisa.
 
@@ -30,3 +30,9 @@ Os antigos registros `pokemonTCG_buy_` ficam preservados no navegador e no backu
 Use **Baixar backup** e **Restaurar backup** para transferir ou recuperar a lista. O backup versão 2 inclui nomes, edições, quantidades, compras e preços, além dos registros antigos. Backups versão 1 continuam aceitos para preservar os registros antigos. Restaurar o mesmo arquivo não duplica os itens: a mesclagem usa IDs estáveis, mantém edições/preços atuais para itens já existentes e preserva as maiores quantidades.
 
 Os dados ficam no navegador e endereço usados. Arquivo local e GitHub Pages não compartilham armazenamento. Não há sincronização entre dispositivos; faça backup antes de limpar os dados do navegador ou trocar de endereço.
+
+## Numeração das cartas
+
+As listas exibem número/total da coleção (ex.: 128/132). O campo de compras aceita esse formato e o inclui na pesquisa da Liga. Códigos antigos conhecidos, como MEG 128, são convertidos ao carregar ou restaurar; IDs, quantidades, compras e preços são mantidos. Códigos desconhecidos ficam preservados para correção manual. A chave de armazenamento não muda.
+
+O botão Copiar para o Live mantém sigla e número no texto exportado, conforme o formato de importação do jogo. Os links do Limitless também mantêm seus identificadores internos.
