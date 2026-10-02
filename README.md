@@ -46,3 +46,9 @@ A revisão 2026-10-02-lista-1 substitui a lista anterior uma única vez em cada 
 As 11 cartas solicitadas têm edições de arte comum verificadas na Liga Pokémon, com ofertas em português. A busca e os nomes na lista abrem a edição exata quando nome e número correspondem ao catálogo; outras edições continuam usando a pesquisa. Idioma e acabamento são selecionados na Liga, conforme a oferta. Preços continuam manuais.
 
 A atualização preenche apenas números vazios dos itens originais com nome correspondente, mantendo a revisão existente, quantidades, compras, preços, alterações e remoções. Não recria itens excluídos.
+
+## Transição do Dragapult
+
+O alvo tem 20 Pokémon, 32 Treinadores e 8 Energias. O deck atual permanece como referência: 49 cartas ficam e 11 são trocadas. Budew, Fezandipiti ex e Energias sem edição informada usam as edições do deck atual. A lista de compras contém apenas a diferença positiva (11 cartas em 7 itens), sem presumir cartas livres de outros decks.
+
+A revisão `2026-10-02-dragapult-alvo-1` substitui a lista anterior uma vez, por solicitação explícita do usuário. Depois disso, compras, preços, edições e remoções permanecem salvos. Os links da Liga foram estendidos às novas cartas; preços continuam manuais.
