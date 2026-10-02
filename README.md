@@ -58,3 +58,9 @@ A revisão `2026-10-02-dragapult-alvo-1` substitui a lista anterior uma vez, por
 O alvo do Zoroark tem 17 Pokémon, 35 Treinadores e 8 Energias. Entram 1 Munkidori, 1 Yveltal e 2 Cyrano; saem 2 Darumaka do N e 2 Darmanitan do N. O atual continua preservado.
 
 A revisão `2026-10-02-dragapult-zoroark-alvos-1` adiciona essa diferença uma vez à revisão de compras do Dragapult, unificando nome/número e preservando compras, preços, alterações e remoções anteriores. Instalações novas recebem 15 cartas em 9 itens para ambos os alvos. Carregamentos seguintes preservam as edições do usuário.
+
+## Troca parcial do Dragapult
+
+Registradas as sete entradas e sete saídas informadas: sai a linha Duskull (5 cartas), 1 Ultra Bola e 1 Torre de Vigia da Equipe Rocket; entram 1 Budew, 1 Dunsparce, 1 Dudunsparce, 1 Ruínas Arriscadas, 1 Juiz e 2 Martelo Esmagador. O atual fica em 19 Pokémon, 33 Treinadores e 8 Energias. Faltam 1 Munkidori, 2 Martelo Esmagador e 1 Ruínas Arriscadas para o alvo.
+
+A revisão `2026-10-02-dragapult-troca-7-1` marca os itens originais da troca como adquiridos uma vez, usando o maior entre o progresso existente e o informado, limitado à quantidade do item. Preserva preços, remoções e as compras do Zoroark. Os itens adquiridos continuam no histórico da lista; totais pendentes e cópia descontam essas cartas.
