@@ -58,6 +58,28 @@ body{margin:0;background:linear-gradient(180deg,#0a0f1b,#0f172a 45%,#0b1020);col
 footer{text-align:center;color:#56657a;font-size:12px;margin-top:34px}
 @media(max-width:900px){.card-grid{grid-template-columns:1fr} .compare-grid{grid-template-columns:1fr}}
 @media(max-width:640px){.shell{width:min(100% - 22px,1180px);padding-top:14px} .hero{padding:18px} .hero h1{font-size:24px} .stats{grid-template-columns:1fr 1fr 1fr} .card-header,.card-content{padding-left:13px;padding-right:13px} .meta{white-space:normal}}
+.shop-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:end}
+.shop-form label{display:grid;gap:7px;font-size:13px;color:#dbeafe;min-width:0}
+.shop-form label span{color:#94a3b8;font-size:11px}
+.shop-form input{box-sizing:border-box;min-width:0;width:100%;background:#0a1120;color:#f8fafc;border:1px solid #334155;border-radius:9px;padding:11px;font:inherit}
+.shop-form input:focus,.shop-button:focus-visible{outline:2px solid #7dd3fc;outline-offset:2px}
+.shop-name{grid-column:span 2}.shop-search{text-align:center;align-self:end}
+.shop-button{border:1px solid #334155;background:#172033;color:#eef2ff;border-radius:9px;padding:10px 12px;cursor:pointer;font:inherit;font-size:13px;text-decoration:none;display:inline-block}
+.shop-button:hover{background:#253449}.shop-button:disabled{opacity:.45;cursor:default}
+.shop-primary{background:#165776;border-color:#2780a7}.shop-primary:hover{background:#206e91}
+.shop-form-actions{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
+.shop-help,.shop-detail{color:#94a3b8;font-size:12px;line-height:1.5}.shop-help{margin:14px 0 0}
+.shop-status{color:#fcd34d;font-size:13px;margin:12px 0 0}.shop-status:empty{display:none}
+.shop-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.shop-summary{font-size:14px;color:#cbd5e1;line-height:1.6}
+.shop-items{display:grid;gap:10px}.shop-empty{border:1px dashed #334155;border-radius:12px;padding:24px;color:#94a3b8;text-align:center}
+.shop-item{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px;border:1px solid #243044;border-radius:12px;background:#111827}
+.shop-item-info{min-width:0;overflow-wrap:anywhere}.shop-item-info a{color:#e5e7eb;text-decoration:none}.shop-item-info a:hover{color:#7dd3fc}.shop-detail{margin:5px 0 0}
+.shop-item-controls{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.shop-count{color:#94a3b8;font-size:12px;white-space:nowrap}
+.shop-item.complete .shop-item-info>a{color:#86efac}.shop-item.complete{border-color:#28513a}
+[hidden]{display:none!important}
+@media(max-width:700px){.shop-form{grid-template-columns:1fr 1fr}.shop-name,.shop-search{grid-column:1/-1}.shop-form label:last-of-type{grid-column:1/-1}.shop-item{align-items:start;flex-direction:column}.shop-item-controls{width:100%}.shop-toolbar>.shop-button{flex:1;text-align:center}}
+
 </style>
 </head>
 <body>
@@ -65,7 +87,7 @@ footer{text-align:center;color:#56657a;font-size:12px;margin-top:34px}
 <section class="hero">
   <h1>Meus Decks Pokémon TCG</h1>
   <p>Decks atuais, versões desejadas, comparador e controle de compras.</p>
-  <div class="stats"><div class="stat"><b>4</b><span>decks atuais</span></div><div class="stat"><b>2</b><span>prontos</span></div><div class="stat"><b>2</b><span>em alteração</span></div></div>
+  <div class="stats"><div class="stat"><b>4</b><span>decks atuais</span></div><div class="stat"><b>3</b><span>prontos</span></div><div class="stat"><b>1</b><span>em alteração</span></div></div>
 </section>
 <nav class="nav"><a href="#atuais">Decks atuais</a><a href="#desejados">Quero montar</a><a href="#compras">Compras</a><a href="#comparador">Comparador</a></nav>
 
@@ -94,12 +116,12 @@ footer{text-align:center;color:#56657a;font-size:12px;margin-top:34px}
 
 <article class="card deck-card">
   <header class="card-header">
-    <div><h3>3. Zoroark ex</h3><span class="badge edit">EM ALTERAÇÃO</span></div>
+    <div><h3>3. Zoroark ex do N</h3><span class="badge ready">PRONTO</span></div>
     <span class="card-count">60 cartas</span>
   </header>
   <div class="card-content">
     <button type="button" class="copy-btn" onclick="copyLiveDeck('zoroarkAtual',this)">Copiar para o Live</button>
-    <div class="deck-list"><div class="section-label">Pokémon <span>13</span></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/97" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">Zorua do N</span><span class="meta">JTG 97 · N&#x27;s Zorua</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/98" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Zoroark ex do N</span><span class="meta">JTG 98 · N&#x27;s Zoroark ex</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/116" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Reshiram do N</span><span class="meta">JTG 116 · N&#x27;s Reshiram</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/27" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Darmanitan do N</span><span class="meta">JTG 27 · N&#x27;s Darmanitan</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/ASC/155" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Zekrom do N</span><span class="meta">ASC 155 · N&#x27;s Zekrom</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/TWM/95" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Munkidori</span><span class="meta">TWM 95 · Munkidori</span></a></div><div class="section-label">Treinadores <span>39</span></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/ASC/181" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Balão de Ar</span><span class="meta">ASC 181 · Air Balloon</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/CRI/82" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Cartão Vermelho Especial</span><span class="meta">CRI 82 · Special Red Card</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/SSP/170" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Cyrano</span><span class="meta">SSP 170 · Cyrano</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/POR/81" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">Poké Tablet</span><span class="meta">POR 81 · Poké Pad</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/PFL/92" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Capacete Punk</span><span class="meta">PFL 92 · Punk Helmet</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/143" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Treino da Faixa Preta</span><span class="meta">JTG 143 · Black Belt&#x27;s Training</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/146" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Busca do Brock</span><span class="meta">JTG 146 · Brock&#x27;s Scouting</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/POR/76" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Juiz</span><span class="meta">POR 76 · Judge</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/MEG/131" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">Ultra Bola</span><span class="meta">MEG 131 · Ultra Ball</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/MEG/114" target="_blank" rel="noopener"><span class="qty">3</span><span class="name">Ordem da Chefia</span><span class="meta">MEG 114 · Boss&#x27;s Orders</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/ASC/196" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">Maça Noturna</span><span class="meta">ASC 196 · Night Stretcher</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/TEF/157" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Pegador Superior</span><span class="meta">TEF 157 · Prime Catcher</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/MEG/119" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">Determinação da Lílian</span><span class="meta">MEG 119 · Lillie&#x27;s Determination</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/153" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">PP Up do N</span><span class="meta">JTG 153 · N&#x27;s PP Up</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/TEF/144" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">Puffin de Colega</span><span class="meta">TEF 144 · Buddy-Buddy Poffin</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/152" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Castelo do N</span><span class="meta">JTG 152 · N&#x27;s Castle</span></a></div><div class="section-label">Energias <span>8</span></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/MEE/15" target="_blank" rel="noopener"><span class="qty">8</span><span class="name">Energia de Escuridão</span><span class="meta">MEE 15 · Darkness Energy</span></a></div></div>
+    <div class="deck-list"><div class="section-label">Pokémon <span>18</span></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/97" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">Zorua do N</span><span class="meta">JTG 97 · N&#x27;s Zorua</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/98" target="_blank" rel="noopener"><span class="qty">3</span><span class="name">Zoroark ex do N</span><span class="meta">JTG 98 · N&#x27;s Zoroark ex</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/ASC/155" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Zekrom do N</span><span class="meta">ASC 155 · N&#x27;s Zekrom</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/116" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Reshiram do N</span><span class="meta">JTG 116 · N&#x27;s Reshiram</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/26" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Darumaka do N</span><span class="meta">JTG 26 · N&#x27;s Darumaka</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/27" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Darmanitan do N</span><span class="meta">JTG 27 · N&#x27;s Darmanitan</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/ASC/16" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Budew</span><span class="meta">ASC 16 · Budew</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/TWM/95" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Munkidori</span><span class="meta">TWM 95 · Munkidori</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/SFA/39" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Pecharunt ex</span><span class="meta">SFA 39 · Pecharunt ex</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/ASC/142" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Fezandipiti ex</span><span class="meta">ASC 142 · Fezandipiti ex</span></a></div><div class="section-label">Treinadores <span>34</span></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/MEG/119" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">Determinação da Lílian</span><span class="meta">MEG 119 · Lillie&#x27;s Determination</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/153" target="_blank" rel="noopener"><span class="qty">3</span><span class="name">PP Up do N</span><span class="meta">JTG 153 · N&#x27;s PP Up</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/MEG/114" target="_blank" rel="noopener"><span class="qty">3</span><span class="name">Ordem da Chefia</span><span class="meta">MEG 114 · Boss&#x27;s Orders</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/SSP/170" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Cyrano</span><span class="meta">SSP 170 · Cyrano</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/PRE/112" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Dom Secreto da Janine</span><span class="meta">PRE 112 · Janine&#x27;s Secret Art</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/143" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Treino da Faixa Preta</span><span class="meta">JTG 143 · Black Belt&#x27;s Training</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/POR/76" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Juiz</span><span class="meta">POR 76 · Judge</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/TEF/144" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">Poffin de Colega</span><span class="meta">TEF 144 · Buddy-Buddy Poffin</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/POR/81" target="_blank" rel="noopener"><span class="qty">3</span><span class="name">Poké Pad</span><span class="meta">POR 81 · Poké Pad</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/ASC/196" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Maca Noturna</span><span class="meta">ASC 196 · Night Stretcher</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/MEG/131" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Ultra Bola</span><span class="meta">MEG 131 · Ultra Ball</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/ASC/212" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Sucateador de Ferramentas</span><span class="meta">ASC 212 · Tool Scrapper</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/CRI/82" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Cartão Vermelho Especial</span><span class="meta">CRI 82 · Special Red Card</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/PRE/95" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Mochi Vinculante</span><span class="meta">PRE 95 · Binding Mochi</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/PFL/92" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Capacete Punk</span><span class="meta">PFL 92 · Punk Helmet</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/152" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Castelo do N</span><span class="meta">JTG 152 · N&#x27;s Castle</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/DRI/180" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Torre de Vigia da Equipe Rocket</span><span class="meta">DRI 180 · Team Rocket&#x27;s Watchtower</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/TWM/163" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Caixa Secreta</span><span class="meta">TWM 163 · Secret Box</span></a></div><div class="section-label">Energias <span>8</span></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/MEE/15" target="_blank" rel="noopener"><span class="qty">8</span><span class="name">Energia de Escuridão Básica</span><span class="meta">MEE 15 · Darkness Energy</span></a></div></div>
   </div>
 </article>
 
@@ -115,16 +137,7 @@ footer{text-align:center;color:#56657a;font-size:12px;margin-top:34px}
 </article>
 </div></section>
 <section class="section" id="desejados"><div class="section-head"><div><h2>Decks que quero montar</h2><p>Listas-alvo para o Pokémon TCG Live.</p></div></div><div class="card-grid">
-<article class="card deck-card">
-  <header class="card-header">
-    <div><h3>Zoroark ex do N</h3><span class="badge target">ALVO</span></div>
-    <span class="card-count">60 cartas</span>
-  </header>
-  <div class="card-content">
-    <button type="button" class="copy-btn" onclick="copyLiveDeck('zoroarkDesejado',this)">Copiar para o Live</button>
-    <div class="deck-list"><div class="section-label">Pokémon <span>17</span></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/97" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">Zorua do N</span><span class="meta">JTG 97 · N&#x27;s Zorua</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/98" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">Zoroark ex do N</span><span class="meta">JTG 98 · N&#x27;s Zoroark ex</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/ASC/155" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Zekrom do N</span><span class="meta">ASC 155 · N&#x27;s Zekrom</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/TWM/95" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Munkidori</span><span class="meta">TWM 95 · Munkidori</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/116" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Reshiram do N</span><span class="meta">JTG 116 · N&#x27;s Reshiram</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/ASC/16" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Budew</span><span class="meta">ASC 16 · Budew</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/MEG/88" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Yveltal</span><span class="meta">MEG 88 · Yveltal</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/SFA/39" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Pecharunt ex</span><span class="meta">SFA 39 · Pecharunt ex</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/ASC/142" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Fezandipiti ex</span><span class="meta">ASC 142 · Fezandipiti ex</span></a></div><div class="section-label">Treinadores <span>35</span></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/MEG/119" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">Determinação da Lílian</span><span class="meta">MEG 119 · Lillie&#x27;s Determination</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/SSP/170" target="_blank" rel="noopener"><span class="qty">3</span><span class="name">Cyrano</span><span class="meta">SSP 170 · Cyrano</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/MEG/114" target="_blank" rel="noopener"><span class="qty">3</span><span class="name">Ordem da Chefia</span><span class="meta">MEG 114 · Boss&#x27;s Orders</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/PRE/112" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Arte Secreta da Janine</span><span class="meta">PRE 112 · Janine&#x27;s Secret Art</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/143" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Treino da Faixa Preta</span><span class="meta">JTG 143 · Black Belt&#x27;s Training</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/POR/76" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Juiz</span><span class="meta">POR 76 · Judge</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/TEF/144" target="_blank" rel="noopener"><span class="qty">4</span><span class="name">Puffin de Colega</span><span class="meta">TEF 144 · Buddy-Buddy Poffin</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/POR/81" target="_blank" rel="noopener"><span class="qty">3</span><span class="name">Poké Tablet</span><span class="meta">POR 81 · Poké Pad</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/153" target="_blank" rel="noopener"><span class="qty">3</span><span class="name">PP Up do N</span><span class="meta">JTG 153 · N&#x27;s PP Up</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/MEG/131" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Ultra Bola</span><span class="meta">MEG 131 · Ultra Ball</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/ASC/196" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Maça Noturna</span><span class="meta">ASC 196 · Night Stretcher</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/CRI/82" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Cartão Vermelho Especial</span><span class="meta">CRI 82 · Special Red Card</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/ASC/212" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Removedor de Ferramenta</span><span class="meta">ASC 212 · Tool Scrapper</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/TWM/163" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Caixa Secreta</span><span class="meta">TWM 163 · Secret Box</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/PRE/95" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Mochi Vinculante</span><span class="meta">PRE 95 · Binding Mochi</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/JTG/152" target="_blank" rel="noopener"><span class="qty">2</span><span class="name">Castelo do N</span><span class="meta">JTG 152 · N&#x27;s Castle</span></a></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/DRI/180" target="_blank" rel="noopener"><span class="qty">1</span><span class="name">Torre de Vigia da Equipe Rocket</span><span class="meta">DRI 180 · Team Rocket&#x27;s Watchtower</span></a></div><div class="section-label">Energias <span>8</span></div><div class="deck-row"><a href="https://limitlesstcg.com/cards/MEE/15" target="_blank" rel="noopener"><span class="qty">8</span><span class="name">Energia de Escuridão</span><span class="meta">MEE 15 · Darkness Energy</span></a></div></div>
-  </div>
-</article>
+
 
 <article class="card deck-card">
   <header class="card-header">
@@ -137,42 +150,31 @@ footer{text-align:center;color:#56657a;font-size:12px;margin-top:34px}
   </div>
 </article>
 </div></section>
-<section class="section" id="compras"><div class="section-head"><div><h2>Lista de compras</h2><p>Use + e − para registrar quantas cópias já comprou.</p></div></div><div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px"><button type="button" class="copy-btn" style="width:auto;margin:0" onclick="downloadPurchaseBackup()">Baixar backup das compras</button><button type="button" class="copy-btn" style="width:auto;margin:0" onclick="document.getElementById('purchase-backup-file').click()">Restaurar backup</button><input type="file" id="purchase-backup-file" accept="application/json,.json" hidden onchange="restorePurchaseBackup(this)"></div><p id="purchase-save-status" role="status" style="color:var(--muted);font-size:12px;margin:0 0 14px"></p><button type="button" class="copy-btn" onclick="copyShoppingList(this)" aria-live="polite">Copiar compras unificadas</button><p style="color:var(--muted);font-size:12px;margin:0 0 14px">Copia apenas o que falta comprar, somando cartas iguais da mesma edição dos dois decks.</p><div class="card-grid">
-<article class="card buy-card">
-  <header class="card-header">
-    <div><h3>Zoroark ex do N</h3><span class="badge buy">COMPRAS</span></div>
-    <span class="card-count">15 cartas</span>
-  </header>
-  <div class="card-content">
-    <div class="buy-list"><div class="buy-group">Pokémon</div><div class="buy-row" data-key="zoroark_JTG_98" data-need="2"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/JTG/98" target="_blank" rel="noopener"><span class="name">Zoroark ex do N</span><span class="meta">JTG 98 · N&#x27;s Zoroark ex</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/2</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="zoroark_TWM_95" data-need="1"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/TWM/95" target="_blank" rel="noopener"><span class="name">Munkidori</span><span class="meta">TWM 95 · Munkidori</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/1</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="zoroark_ASC_16" data-need="1"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/ASC/16" target="_blank" rel="noopener"><span class="name">Budew</span><span class="meta">ASC 16 · Budew</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/1</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="zoroark_MEG_88" data-need="1"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/MEG/88" target="_blank" rel="noopener"><span class="name">Yveltal</span><span class="meta">MEG 88 · Yveltal</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/1</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="zoroark_SFA_39" data-need="1"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/SFA/39" target="_blank" rel="noopener"><span class="name">Pecharunt ex</span><span class="meta">SFA 39 · Pecharunt ex</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/1</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="zoroark_ASC_142" data-need="1"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/ASC/142" target="_blank" rel="noopener"><span class="name">Fezandipiti ex</span><span class="meta">ASC 142 · Fezandipiti ex</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/1</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-group">Treinadores</div><div class="buy-row" data-key="zoroark_SSP_170" data-need="2"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/SSP/170" target="_blank" rel="noopener"><span class="name">Cyrano</span><span class="meta">SSP 170 · Cyrano</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/2</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="zoroark_PRE_112" data-need="1"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/PRE/112" target="_blank" rel="noopener"><span class="name">Arte Secreta da Janine</span><span class="meta">PRE 112 · Janine&#x27;s Secret Art</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/1</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="zoroark_TWM_163" data-need="1"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/TWM/163" target="_blank" rel="noopener"><span class="name">Caixa Secreta</span><span class="meta">TWM 163 · Secret Box</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/1</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="zoroark_ASC_212" data-need="1"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/ASC/212" target="_blank" rel="noopener"><span class="name">Removedor de Ferramenta</span><span class="meta">ASC 212 · Tool Scrapper</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/1</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="zoroark_PRE_95" data-need="2"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/PRE/95" target="_blank" rel="noopener"><span class="name">Mochi Vinculante</span><span class="meta">PRE 95 · Binding Mochi</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/2</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="zoroark_DRI_180" data-need="1"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/DRI/180" target="_blank" rel="noopener"><span class="name">Torre de Vigia da Equipe Rocket</span><span class="meta">DRI 180 · Team Rocket&#x27;s Watchtower</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/1</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div></div>
-    <div class="buy-summary">Compradas: 0 de 15 cartas</div>
+<section class="section" id="compras">
+  <div class="section-head"><div><h2>Lista de compras</h2><p>Monte sua lista com as cartas e quantidades que você quer comprar.</p></div></div>
+  <div class="card"><div class="card-content">
+    <form id="shopping-form" class="shop-form">
+      <label class="shop-name">Carta<input id="shopping-name" list="shopping-suggestions" required maxlength="160" placeholder="Digite o nome da carta" autocomplete="off"><datalist id="shopping-suggestions"></datalist></label>
+      <a id="shopping-liga-search" class="shop-button shop-search" target="_blank" rel="noopener noreferrer">Pesquisar na Liga ↗</a>
+      <label>Edição / número <span>(opcional)</span><input id="shopping-edition" maxlength="100" placeholder="Ex.: MEG 128"></label>
+      <label>Quantidade desejada<input id="shopping-quantity" type="number" min="1" max="999" step="1" value="1" required></label>
+      <label>Menor preço visto na Liga (R$)<input id="shopping-price" type="text" inputmode="decimal" maxlength="10" placeholder="Ex.: 0,50"></label>
+      <div class="shop-form-actions"><button type="submit" id="shopping-submit" class="shop-button shop-primary">Adicionar à lista</button><button type="button" id="shopping-cancel" class="shop-button" hidden>Cancelar edição</button></div>
+    </form>
+    <p class="shop-help">A pesquisa abre a Liga em outra aba. Confira a edição e informe o menor preço por carta encontrado; o valor é opcional e fica salvo como referência, sem atualização automática.</p>
+    <p id="purchase-save-status" role="status" aria-live="polite" class="shop-status"></p>
+  </div></div>
+  <div class="shop-toolbar">
+    <button type="button" class="shop-button" onclick="copyShoppingList(this)">Copiar lista de compras</button>
+    <button type="button" class="shop-button" onclick="downloadPurchaseBackup()">Baixar backup</button>
+    <button type="button" class="shop-button" onclick="document.getElementById('purchase-backup-file').click()">Restaurar backup</button>
+    <input type="file" id="purchase-backup-file" accept="application/json,.json" hidden onchange="restorePurchaseBackup(this)">
   </div>
-</article>
-
-<article class="card buy-card">
-  <header class="card-header">
-    <div><h3>Alakazam</h3><span class="badge buy">COMPRAS</span></div>
-    <span class="card-count">30 cartas</span>
-  </header>
-  <div class="card-content">
-    <div class="buy-list"><div class="buy-group">Pokémon</div><div class="buy-row" data-key="alakazam_PRE_35" data-need="4"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/PRE/35" target="_blank" rel="noopener"><span class="name">Duskull</span><span class="meta">PRE 35 · Duskull</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/4</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="alakazam_PRE_36" data-need="2"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/PRE/36" target="_blank" rel="noopener"><span class="name">Dusclops</span><span class="meta">PRE 36 · Dusclops</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/2</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="alakazam_PRE_37" data-need="2"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/PRE/37" target="_blank" rel="noopener"><span class="name">Dusknoir</span><span class="meta">PRE 37 · Dusknoir</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/2</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="alakazam_ASC_16" data-need="2"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/ASC/16" target="_blank" rel="noopener"><span class="name">Budew</span><span class="meta">ASC 16 · Budew</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/2</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="alakazam_DRI_10" data-need="1"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/DRI/10" target="_blank" rel="noopener"><span class="name">Shaymin</span><span class="meta">DRI 10 · Shaymin</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/1</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="alakazam_ASC_142" data-need="1"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/ASC/142" target="_blank" rel="noopener"><span class="name">Fezandipiti ex</span><span class="meta">ASC 142 · Fezandipiti ex</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/1</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-group">Treinadores</div><div class="buy-row" data-key="alakazam_WHT_84" data-need="2"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/WHT/84" target="_blank" rel="noopener"><span class="name">Hilda</span><span class="meta">WHT 84 · Hilda</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/2</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="alakazam_PBL_78" data-need="3"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/PBL/78" target="_blank" rel="noopener"><span class="name">Gwynn</span><span class="meta">PBL 78 · Gwynn</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/3</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="alakazam_POR_81" data-need="3"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/POR/81" target="_blank" rel="noopener"><span class="name">Poké Tablet</span><span class="meta">POR 81 · Poké Pad</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/3</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="alakazam_MEG_128" data-need="3"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/MEG/128" target="_blank" rel="noopener"><span class="name">Relógio Insólito</span><span class="meta">MEG 128 · Strange Timepiece</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/3</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="alakazam_CRI_82" data-need="2"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/CRI/82" target="_blank" rel="noopener"><span class="name">Cartão Vermelho Especial</span><span class="meta">CRI 82 · Special Red Card</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/2</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-row" data-key="alakazam_DRI_168" data-need="1"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/DRI/168" target="_blank" rel="noopener"><span class="name">Cinzas Sagradas</span><span class="meta">DRI 168 · Sacred Ash</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/1</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div><div class="buy-group">Energias</div><div class="buy-row" data-key="alakazam_POR_88" data-need="4"><div class="buy-card-name"><a href="https://limitlesstcg.com/cards/POR/88" target="_blank" rel="noopener"><span class="name">Energia Psíquica Telepática</span><span class="meta">POR 88 · Telepathic Psychic Energy</span></a></div><div class="buy-controls"><button type="button" onclick="setBuyQty(this,-1)">−</button><span class="qty-status">0/4</span><button type="button" onclick="setBuyQty(this,1)">+</button></div></div></div>
-    <div class="buy-summary">Compradas: 0 de 30 cartas</div>
-  </div>
-</article>
-</div></section>
+  <p id="shopping-summary" class="shop-summary" aria-live="polite"></p>
+  <div id="shopping-items" class="shop-items"></div>
+</section>
 <section class="section" id="comparador"><div class="section-head"><div><h2>Comparador atual × desejado</h2><p>O que permanece, entra e sai em cada deck.</p></div></div><div class="compare-stack">
-<article class="card compare-card">
-  <header class="card-header">
-    <div><h3>Zoroark ex do N</h3><span class="badge edit">ATUAL → ALVO</span></div>
-  </header>
-  <div class="card-content">
-    <div class="compare-grid">
-      <div class="compare-column keep"><h4>✓ Manter</h4><ul><li>4 Zorua do N</li><li>2 Zekrom do N</li><li>1 Reshiram do N</li><li>1 Munkidori</li><li>4 Determinação da Lílian</li><li>1 Cyrano</li><li>3 Ordem da Chefia</li><li>1 Treino da Faixa Preta</li><li>1 Juiz</li><li>4 Puffin de Colega</li><li>3 Poké Tablet</li><li>3 PP Up do N</li><li>2 Ultra Bola</li><li>2 Maça Noturna</li><li>1 Cartão Vermelho Especial</li><li>2 Castelo do N</li><li>8 Energia de Escuridão</li></ul></div>
-      <div class="compare-column add"><h4>＋ Adicionar</h4><ul><li>2 Zoroark ex do N</li><li>1 Munkidori</li><li>1 Budew</li><li>1 Yveltal</li><li>1 Pecharunt ex</li><li>1 Fezandipiti ex</li><li>2 Cyrano</li><li>1 Arte Secreta da Janine</li><li>1 Removedor de Ferramenta</li><li>1 Caixa Secreta</li><li>2 Mochi Vinculante</li><li>1 Torre de Vigia da Equipe Rocket</li></ul></div>
-      <div class="compare-column remove"><h4>− Remover</h4><ul><li>1 Reshiram do N</li><li>2 Darmanitan do N</li><li>1 Balão de Ar</li><li>1 Poké Tablet</li><li>1 Capacete Punk</li><li>2 Busca do Brock</li><li>1 Juiz</li><li>2 Ultra Bola</li><li>2 Maça Noturna</li><li>1 Pegador Superior</li><li>1 PP Up do N</li></ul></div>
-    </div>
-  </div>
-</article>
+
 
 <article class="card compare-card">
   <header class="card-header">
@@ -192,148 +194,236 @@ footer{text-align:center;color:#56657a;font-size:12px;margin-top:34px}
 <footer>Painel pessoal de decks Pokémon TCG</footer>
 </main>
 <script>
-const LIVE_DECKS = {"dragapult": "Pokémon: 18\n4 Dreepy TWM 128\n4 Drakloak TWM 129\n3 Dragapult ex TWM 130\n2 Duskull SFA 18\n1 Dusclops SFA 19\n1 Dusknoir SFA 20\n1 Budew PRE 4\n1 Fezandipiti ex SFA 38\n1 Munkidori TWM 95\n\nTrainer: 33\n4 Lillie's Determination MEG 119\n1 Unfair Stamp TWM 165\n3 Night Stretcher ASC 196\n2 Rare Candy MEG 125\n1 Rosa's Encouragement POR 84\n4 Poké Pad POR 81\n2 Crispin SCR 133\n1 Risky Ruins MEG 127\n2 Crushing Hammer POR 71\n2 Boss's Orders MEG 114\n1 Team Rocket's Watchtower ASC 210\n1 Judge POR 76\n1 Special Red Card CRI 82\n4 Ultra Ball MEG 131\n4 Buddy-Buddy Poffin TEF 144\n\nEnergy: 9\n3 Fire Energy MEE 2\n2 Darkness Energy MEE 15\n4 Psychic Energy MEE 13", "lucario": "Pokémon: 16\n3 Solrock MEG 75\n2 Lunatone MEG 74\n3 Mega Lucario ex MEG 77\n3 Riolu MEG 76\n2 Makuhita MEG 72\n2 Hariyama MEG 73\n1 Fezandipiti ex SFA 38\n\nTrainer: 31\n1 Secret Box TWM 163\n2 Air Balloon ASC 181\n4 Ultra Ball MEG 131\n4 Fighting Gong MEG 116\n4 Premium Power Pro MEG 124\n2 Boss's Orders MEG 114\n4 Poké Pad POR 81\n1 Switch MEG 130\n2 Judge POR 76\n4 Lillie's Determination MEG 119\n1 Wally's Compassion MEG 132\n2 Gravity Mountain SSP 177\n\nEnergy: 13\n13 Fighting Energy MEE 6", "zoroarkAtual": "Pokémon: 13\n4 N's Zorua JTG 97\n2 N's Zoroark ex JTG 98\n2 N's Reshiram JTG 116\n2 N's Darmanitan JTG 27\n2 N's Zekrom ASC 155\n1 Munkidori TWM 95\n\nTrainer: 39\n1 Air Balloon ASC 181\n1 Special Red Card CRI 82\n1 Cyrano SSP 170\n4 Poké Pad POR 81\n1 Punk Helmet PFL 92\n1 Black Belt's Training JTG 143\n2 Brock's Scouting JTG 146\n2 Judge POR 76\n4 Ultra Ball MEG 131\n3 Boss's Orders MEG 114\n4 Night Stretcher ASC 196\n1 Prime Catcher TEF 157\n4 Lillie's Determination MEG 119\n4 N's PP Up JTG 153\n4 Buddy-Buddy Poffin TEF 144\n2 N's Castle JTG 152\n\nEnergy: 8\n8 Darkness Energy MEE 15", "alakazamAtual": "Pokémon: 18\n4 Abra MEG 54\n4 Kadabra MEG 55\n3 Alakazam MEG 56\n3 Dunsparce JTG 120\n3 Dudunsparce TEF 129\n1 Fan Rotom SCR 118\n\nTrainer: 32\n4 Dawn PFL 87\n3 Boss's Orders MEG 114\n2 Battle Cage PFL 85\n1 Poké Pad POR 81\n3 Night Stretcher ASC 196\n1 Prime Catcher TEF 157\n4 Lillie's Determination MEG 119\n1 Air Balloon ASC 181\n2 Wondrous Patch PFL 94\n4 Buddy-Buddy Poffin TEF 144\n1 Enhanced Hammer TWM 148\n4 Rare Candy MEG 125\n2 Hilda WHT 84\n\nEnergy: 10\n10 Psychic Energy MEE 13", "zoroarkDesejado": "Pokémon: 17\n4 N's Zorua JTG 97\n4 N's Zoroark ex JTG 98\n2 N's Zekrom ASC 155\n2 Munkidori TWM 95\n1 N's Reshiram JTG 116\n1 Budew ASC 16\n1 Yveltal MEG 88\n1 Pecharunt ex SFA 39\n1 Fezandipiti ex ASC 142\n\nTrainer: 35\n4 Lillie's Determination MEG 119\n3 Cyrano SSP 170\n3 Boss's Orders MEG 114\n1 Janine's Secret Art PRE 112\n1 Black Belt's Training JTG 143\n1 Judge POR 76\n4 Buddy-Buddy Poffin TEF 144\n3 Poké Pad POR 81\n3 N's PP Up JTG 153\n2 Ultra Ball MEG 131\n2 Night Stretcher ASC 196\n1 Special Red Card CRI 82\n1 Tool Scrapper ASC 212\n1 Secret Box TWM 163\n2 Binding Mochi PRE 95\n2 N's Castle JTG 152\n1 Team Rocket's Watchtower DRI 180\n\nEnergy: 8\n8 Darkness Energy MEE 15", "alakazamDesejado": "Pokémon: 23\n4 Duskull PRE 35\n2 Dusclops PRE 36\n2 Dusknoir PRE 37\n3 Abra MEG 54\n1 Abra TWM 80\n4 Kadabra MEG 55\n3 Alakazam MEG 56\n2 Budew ASC 16\n1 Shaymin DRI 10\n1 Fezandipiti ex ASC 142\n\nTrainer: 32\n4 Hilda WHT 84\n4 Dawn PFL 87\n3 Gwynn PBL 78\n1 Boss's Orders MEG 114\n4 Rare Candy MEG 125\n4 Poké Pad POR 81\n3 Buddy-Buddy Poffin TEF 144\n3 Strange Timepiece MEG 128\n2 Special Red Card CRI 82\n2 Night Stretcher ASC 196\n1 Sacred Ash DRI 168\n1 Prime Catcher TEF 157\n\nEnergy: 5\n4 Telepathic Psychic Energy POR 88\n1 Psychic Energy MEE 13"};
+const LIVE_DECKS = {"dragapult":"Pokémon: 18\n4 Dreepy TWM 128\n4 Drakloak TWM 129\n3 Dragapult ex TWM 130\n2 Duskull SFA 18\n1 Dusclops SFA 19\n1 Dusknoir SFA 20\n1 Budew PRE 4\n1 Fezandipiti ex SFA 38\n1 Munkidori TWM 95\n\nTrainer: 33\n4 Lillie's Determination MEG 119\n1 Unfair Stamp TWM 165\n3 Night Stretcher ASC 196\n2 Rare Candy MEG 125\n1 Rosa's Encouragement POR 84\n4 Poké Pad POR 81\n2 Crispin SCR 133\n1 Risky Ruins MEG 127\n2 Crushing Hammer POR 71\n2 Boss's Orders MEG 114\n1 Team Rocket's Watchtower ASC 210\n1 Judge POR 76\n1 Special Red Card CRI 82\n4 Ultra Ball MEG 131\n4 Buddy-Buddy Poffin TEF 144\n\nEnergy: 9\n3 Fire Energy MEE 2\n2 Darkness Energy MEE 15\n4 Psychic Energy MEE 13","lucario":"Pokémon: 16\n3 Solrock MEG 75\n2 Lunatone MEG 74\n3 Mega Lucario ex MEG 77\n3 Riolu MEG 76\n2 Makuhita MEG 72\n2 Hariyama MEG 73\n1 Fezandipiti ex SFA 38\n\nTrainer: 31\n1 Secret Box TWM 163\n2 Air Balloon ASC 181\n4 Ultra Ball MEG 131\n4 Fighting Gong MEG 116\n4 Premium Power Pro MEG 124\n2 Boss's Orders MEG 114\n4 Poké Pad POR 81\n1 Switch MEG 130\n2 Judge POR 76\n4 Lillie's Determination MEG 119\n1 Wally's Compassion MEG 132\n2 Gravity Mountain SSP 177\n\nEnergy: 13\n13 Fighting Energy MEE 6","zoroarkAtual":"Pokémon: 18\n4 N's Zorua JTG 97\n3 N's Zoroark ex JTG 98\n2 N's Zekrom ASC 155\n1 N's Reshiram JTG 116\n2 N's Darumaka JTG 26\n2 N's Darmanitan JTG 27\n1 Budew ASC 16\n1 Munkidori TWM 95\n1 Pecharunt ex SFA 39\n1 Fezandipiti ex ASC 142\n\nTrainer: 34\n4 Lillie's Determination MEG 119\n3 N's PP Up JTG 153\n3 Boss's Orders MEG 114\n1 Cyrano SSP 170\n1 Janine's Secret Art PRE 112\n1 Black Belt's Training JTG 143\n1 Judge POR 76\n4 Buddy-Buddy Poffin TEF 144\n3 Poké Pad POR 81\n2 Night Stretcher ASC 196\n2 Ultra Ball MEG 131\n1 Tool Scrapper ASC 212\n1 Special Red Card CRI 82\n2 Binding Mochi PRE 95\n1 Punk Helmet PFL 92\n2 N's Castle JTG 152\n1 Team Rocket's Watchtower DRI 180\n1 Secret Box TWM 163\n\nEnergy: 8\n8 Darkness Energy MEE 15","alakazamAtual":"Pokémon: 18\n4 Abra MEG 54\n4 Kadabra MEG 55\n3 Alakazam MEG 56\n3 Dunsparce JTG 120\n3 Dudunsparce TEF 129\n1 Fan Rotom SCR 118\n\nTrainer: 32\n4 Dawn PFL 87\n3 Boss's Orders MEG 114\n2 Battle Cage PFL 85\n1 Poké Pad POR 81\n3 Night Stretcher ASC 196\n1 Prime Catcher TEF 157\n4 Lillie's Determination MEG 119\n1 Air Balloon ASC 181\n2 Wondrous Patch PFL 94\n4 Buddy-Buddy Poffin TEF 144\n1 Enhanced Hammer TWM 148\n4 Rare Candy MEG 125\n2 Hilda WHT 84\n\nEnergy: 10\n10 Psychic Energy MEE 13","alakazamDesejado":"Pokémon: 23\n4 Duskull PRE 35\n2 Dusclops PRE 36\n2 Dusknoir PRE 37\n3 Abra MEG 54\n1 Abra TWM 80\n4 Kadabra MEG 55\n3 Alakazam MEG 56\n2 Budew ASC 16\n1 Shaymin DRI 10\n1 Fezandipiti ex ASC 142\n\nTrainer: 32\n4 Hilda WHT 84\n4 Dawn PFL 87\n3 Gwynn PBL 78\n1 Boss's Orders MEG 114\n4 Rare Candy MEG 125\n4 Poké Pad POR 81\n3 Buddy-Buddy Poffin TEF 144\n3 Strange Timepiece MEG 128\n2 Special Red Card CRI 82\n2 Night Stretcher ASC 196\n1 Sacred Ash DRI 168\n1 Prime Catcher TEF 157\n\nEnergy: 5\n4 Telepathic Psychic Energy POR 88\n1 Psychic Energy MEE 13"};
 function copyLiveDeck(id,btn){
   navigator.clipboard.writeText(LIVE_DECKS[id]||"");
   const old=btn.textContent; btn.textContent="Copiado ✓";
   setTimeout(()=>btn.textContent=old,1200);
 }
-function buildShoppingList(){
-  const cards=new Map();
-  document.querySelectorAll(".buy-row").forEach(row=>{
-    const need=Number(row.dataset.need);
-    const saved=Number(localStorage.getItem("pokemonTCG_buy_"+row.dataset.key)||0);
-    const have=Number.isFinite(saved)?Math.max(0,Math.min(need,saved)):0;
-    const remaining=need-have;
-    if(remaining<=0) return;
-    const code=row.querySelector(".meta").textContent.split("·")[0].trim();
-    const name=row.querySelector(".name").textContent.trim();
-    if(cards.has(code)) cards.get(code).quantity+=remaining;
-    else cards.set(code,{name,code,quantity:remaining});
+'use strict';
+// Stable storage key: never version this key to release UI changes.
+const SHOPPING_KEY='pokemonTCG_shoppingList_v1';
+const LEGACY_PREFIX='pokemonTCG_buy_';
+let shoppingItems=[];
+let shoppingWritable=true;
+let editingId=null;
+const shopElement=id=>document.getElementById(id);
+const brl=cents=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(cents/100);
+function shopStatus(message){shopElement('purchase-save-status').textContent=message;}
+function validShoppingItems(items){
+  if(!Array.isArray(items)||items.length>5000) throw Error('Lista inválida');
+  const ids=new Set();
+  return items.map(item=>{
+    if(!item||typeof item.id!=='string'||!/^[a-zA-Z0-9_-]{1,100}$/.test(item.id)||ids.has(item.id)||
+      typeof item.name!=='string'||!item.name.trim()||item.name.length>160||
+      typeof item.edition!=='string'||item.edition.length>100||
+      !Number.isSafeInteger(item.quantity)||item.quantity<1||item.quantity>999||
+      !Number.isSafeInteger(item.bought)||item.bought<0||item.bought>item.quantity||
+      !(item.priceCents===null||(Number.isSafeInteger(item.priceCents)&&item.priceCents>=0&&item.priceCents<=100000000))) throw Error('Carta inválida');
+    ids.add(item.id);
+    return {id:item.id,name:item.name.trim(),edition:item.edition.trim(),quantity:item.quantity,bought:item.bought,priceCents:item.priceCents};
   });
-  return Array.from(cards.values(),card=>`${card.quantity} ${card.name} ${card.code}`).join("\n");
 }
-async function copyShoppingList(btn){
-  const old=btn.textContent;
+function persistShopping(items){
+  if(!shoppingWritable){shopStatus('Não foi possível ler os dados salvos. Baixe um backup antes de tentar restaurar a lista.');return false;}
+  try{
+    const checked=validShoppingItems(items);
+    localStorage.setItem(SHOPPING_KEY,JSON.stringify(checked));
+    shoppingItems=checked;
+    renderShopping();
+    shopStatus('Lista salva neste navegador.');
+    return true;
+  }catch(error){shopStatus('Não foi possível salvar. A lista anterior foi mantida. Verifique o armazenamento do navegador.');return false;}
+}
+function parseShopPrice(value){
+  value=value.trim();
+  if(!value)return null;
+  if(!/^\d{1,7}([.,]\d{1,2})?$/.test(value))throw Error('Informe o preço como 1,50, sem separador de milhares.');
+  const cents=Math.round(Number(value.replace(',','.'))*100);
+  if(cents>100000000)throw Error('Preço acima do limite.');
+  return cents;
+}
+function ligaSearchUrl(name){return 'https://www.ligapokemon.com.br/?view=cards/search&card='+encodeURIComponent(name);}
+function updateLigaSearch(){
+  const name=shopElement('shopping-name').value.trim();
+  const link=shopElement('shopping-liga-search');
+  link.href=ligaSearchUrl(name);
+  link.setAttribute('aria-disabled',String(!name));
+}
+function resetShoppingForm(){
+  shopElement('shopping-form').reset();editingId=null;
+  shopElement('shopping-submit').textContent='Adicionar à lista';
+  shopElement('shopping-cancel').hidden=true;
+  updateLigaSearch();
+}
+function saveShoppingForm(event){
+  event.preventDefault();
+  try{
+    const name=shopElement('shopping-name').value.trim();
+    const edition=shopElement('shopping-edition').value.trim();
+    const quantity=Number(shopElement('shopping-quantity').value);
+    const priceCents=parseShopPrice(shopElement('shopping-price').value);
+    if(!name||!Number.isInteger(quantity)||quantity<1||quantity>999)throw Error('Preencha o nome e uma quantidade entre 1 e 999.');
+    const previous=shoppingItems.find(item=>item.id===editingId);
+    if(previous&&quantity<previous.bought)throw Error('A quantidade desejada não pode ser menor que a já comprada.');
+    const item={id:previous?previous.id:crypto.randomUUID(),name,edition,quantity,bought:previous?previous.bought:0,priceCents};
+    const next=previous?shoppingItems.map(old=>old.id===item.id?item:old):[...shoppingItems,item];
+    if(persistShopping(next))resetShoppingForm();
+  }catch(error){shopStatus(error.message);}
+}
+function editShoppingItem(id){
+  const item=shoppingItems.find(item=>item.id===id);if(!item)return;
+  editingId=id;
+  shopElement('shopping-name').value=item.name;
+  shopElement('shopping-edition').value=item.edition;
+  shopElement('shopping-quantity').value=item.quantity;
+  shopElement('shopping-price').value=item.priceCents===null?'':(item.priceCents/100).toFixed(2).replace('.',',');
+  shopElement('shopping-submit').textContent='Salvar alteração';
+  shopElement('shopping-cancel').hidden=false;
+  updateLigaSearch();shopElement('shopping-name').focus();
+}
+function adjustShoppingItem(id,delta){
+  persistShopping(shoppingItems.map(item=>item.id===id?{...item,bought:Math.max(0,Math.min(item.quantity,item.bought+delta))}:item));
+}
+function removeShoppingItem(id){
+  const item=shoppingItems.find(item=>item.id===id);if(!item)return;
+  if(!window.confirm('Remover '+item.name+' da lista de compras?'))return;
+  if(persistShopping(shoppingItems.filter(item=>item.id!==id))&&editingId===id)resetShoppingForm();
+}
+function shopNode(tag,text,className){
+  const node=document.createElement(tag);
+  if(text!==undefined)node.textContent=text;
+  if(className)node.className=className;
+  return node;
+}
+function shopButton(text,label,action){
+  const button=shopNode('button',text,'shop-button');button.type='button';
+  button.setAttribute('aria-label',label);button.addEventListener('click',action);return button;
+}
+function shoppingTotals(items){
+  return items.reduce((total,item)=>{
+    const remaining=item.quantity-item.bought;
+    total.quantity+=item.quantity;total.bought+=item.bought;
+    if(item.priceCents===null)total.unpriced+=remaining;
+    else total.cents+=remaining*item.priceCents;
+    return total;
+  },{quantity:0,bought:0,unpriced:0,cents:0});
+}
+function renderShopping(){
+  const container=shopElement('shopping-items');container.replaceChildren();
+  if(!shoppingItems.length)container.appendChild(shopNode('p','Sua lista está vazia. Busque uma carta acima e adicione a quantidade que deseja.','shop-empty'));
+  shoppingItems.forEach(item=>{
+    const row=shopNode('article',undefined,'shop-item'+(item.bought===item.quantity?' complete':''));
+    const info=shopNode('div',undefined,'shop-item-info');
+    const link=shopNode('a',item.name);link.href=ligaSearchUrl(item.name);link.target='_blank';link.rel='noopener noreferrer';info.appendChild(link);
+    if(item.edition)info.appendChild(shopNode('p',item.edition,'shop-detail'));
+    const remaining=item.quantity-item.bought;
+    info.appendChild(shopNode('p',item.priceCents===null?'Preço não informado':brl(item.priceCents)+' por carta · '+brl(remaining*item.priceCents)+' a comprar','shop-detail'));
+    const controls=shopNode('div',undefined,'shop-item-controls');
+    const minus=shopButton('−','Diminuir compradas de '+item.name,()=>adjustShoppingItem(item.id,-1));minus.disabled=item.bought===0;
+    const plus=shopButton('+','Aumentar compradas de '+item.name,()=>adjustShoppingItem(item.id,1));plus.disabled=item.bought===item.quantity;
+    controls.append(minus,shopNode('span',item.bought+'/'+item.quantity+' compradas','shop-count'),plus,
+      shopButton('Editar','Editar '+item.name,()=>editShoppingItem(item.id)),
+      shopButton('Remover','Remover '+item.name,()=>removeShoppingItem(item.id)));
+    row.append(info,controls);container.appendChild(row);
+  });
+  const totals=shoppingTotals(shoppingItems);
+  shopElement('shopping-summary').textContent=totals.bought+' de '+totals.quantity+' cartas compradas · '+(totals.unpriced?'Subtotal':'Total')+' a comprar: '+brl(totals.cents)+(totals.unpriced?' · '+totals.unpriced+' sem preço':'')+' (sem frete)';
+}
+function buildShoppingList(){
+  const merged=new Map();
+  shoppingItems.forEach(item=>{
+    const quantity=item.quantity-item.bought;if(!quantity)return;
+    const key=JSON.stringify([item.name.trim().toLocaleLowerCase('pt-BR'),item.edition.trim().toLocaleLowerCase('pt-BR')]);
+    if(merged.has(key))merged.get(key).quantity+=quantity;
+    else merged.set(key,{...item,quantity});
+  });
+  return [...merged.values()].map(item=>item.quantity+' '+item.name+(item.edition?' — '+item.edition:'')).join('\n');
+}
+async function copyShoppingList(button){
   const text=buildShoppingList();
-  if(!text){
-    btn.textContent="Tudo comprado ✓";
-    btn.disabled=true;
-    setTimeout(()=>{btn.textContent=old;btn.disabled=false;},1600);
-    return;
-  }
-  btn.disabled=true;
+  if(!text){shopStatus('Nenhuma carta pendente para copiar.');return;}
+  button.disabled=true;
   try{
     let copied=false;
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      try{await navigator.clipboard.writeText(text);copied=true;}catch(error){}
-    }
+    if(navigator.clipboard)try{await navigator.clipboard.writeText(text);copied=true;}catch(error){}
     if(!copied){
-      const field=document.createElement("textarea");
-      field.value=text;
-      field.setAttribute("readonly","");
-      field.style.cssText="position:fixed;top:0;left:0;opacity:0";
+      const field=shopNode('textarea');field.value=text;field.style.cssText='position:fixed;opacity:0';
       document.body.appendChild(field);
-      try{
-        field.select();
-        if(!document.execCommand("copy")) throw new Error("Falha ao copiar");
-      }finally{field.remove();btn.focus();}
+      try{field.select();if(!document.execCommand('copy'))throw Error('Clipboard');}finally{field.remove();button.focus();}
     }
-    btn.textContent="Compras copiadas ✓";
-  }catch(error){
-    btn.textContent="Não foi possível copiar";
-    window.prompt("Copie a lista de compras abaixo:",text);
-  }finally{
-    setTimeout(()=>{btn.textContent=old;btn.disabled=false;},1600);
-  }
+    shopStatus('Lista de compras copiada.');
+  }catch(error){window.prompt('Copie sua lista de compras:',text);}finally{button.disabled=false;}
 }
-// Preserve this prefix and each data-key when updating deck names or layout.
-const PURCHASE_PREFIX="pokemonTCG_buy_";
-function purchaseStatus(message){
-  document.getElementById("purchase-save-status").textContent=message;
+function readLegacyPurchases(){
+  const purchases={};
+  for(let i=0;i<localStorage.length;i++){
+    const key=localStorage.key(i);
+    if(key&&key.startsWith(LEGACY_PREFIX)){
+      const value=Number(localStorage.getItem(key));
+      if(Number.isSafeInteger(value)&&value>=0)purchases[key]=value;
+    }
+  }
+  return purchases;
+}
+function validatePurchaseBackup(backup){
+  if(!backup||backup.app!=='pokemon-tcg-decks'||![1,2].includes(backup.version)||!backup.purchases||
+    typeof backup.purchases!=='object'||Array.isArray(backup.purchases))throw Error('Backup inválido');
+  const entries=Object.entries(backup.purchases);
+  if(entries.some(([key,value])=>!/^pokemonTCG_buy_[a-zA-Z0-9_-]+$/.test(key)||!Number.isSafeInteger(value)||value<0))throw Error('Backup inválido');
+  return {entries,items:backup.version===2?validShoppingItems(backup.shoppingItems):[]};
 }
 function downloadPurchaseBackup(){
   try{
-    const purchases={};
-    for(let i=0;i<localStorage.length;i++){
-      const key=localStorage.key(i);
-      if(!key || !key.startsWith(PURCHASE_PREFIX)) continue;
-      const value=Number(localStorage.getItem(key));
-      if(!Number.isSafeInteger(value) || value<0) throw new Error("Dados inválidos");
-      purchases[key]=value;
-    }
-    const backup={app:"pokemon-tcg-decks",version:1,exportedAt:new Date().toISOString(),purchases};
-    const url=URL.createObjectURL(new Blob([JSON.stringify(backup,null,2)],{type:"application/json"}));
-    const link=document.createElement("a");
-    link.href=url;
-    link.download="compras-pokemon-"+new Date().toISOString().slice(0,10)+".json";
-    document.body.appendChild(link);
-    link.click();link.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),1000);
-    purchaseStatus("Backup gerado. Guarde o arquivo para recuperar suas compras em outro navegador ou endereço.");
-  }catch(error){
-    purchaseStatus("Não foi possível gerar o backup. Verifique se o navegador permite salvar dados deste site.");
-  }
-}
-function validatePurchaseBackup(backup){
-  if(!backup || backup.app!=="pokemon-tcg-decks" || backup.version!==1 ||
-     !backup.purchases || typeof backup.purchases!=="object" || Array.isArray(backup.purchases)){
-    throw new Error("Backup inválido");
-  }
-  const entries=Object.entries(backup.purchases);
-  if(entries.some(([key,value])=>!/^pokemonTCG_buy_[a-zA-Z0-9_-]+$/.test(key) ||
-     !Number.isSafeInteger(value) || value<0)) throw new Error("Backup inválido");
-  return entries;
+    const backup={app:'pokemon-tcg-decks',version:2,exportedAt:new Date().toISOString(),purchases:readLegacyPurchases(),shoppingItems};
+    // Keep unreadable data recoverable instead of silently exporting an empty list.
+    if(!shoppingWritable)backup.unreadableShoppingData=localStorage.getItem(SHOPPING_KEY);
+    const url=URL.createObjectURL(new Blob([JSON.stringify(backup,null,2)],{type:'application/json'}));
+    const link=shopNode('a');link.href=url;link.download='compras-pokemon-'+new Date().toISOString().slice(0,10)+'.json';
+    document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    shopStatus('Backup gerado. Guarde o arquivo para recuperar sua lista.');
+  }catch(error){shopStatus('Não foi possível gerar o backup. Verifique o armazenamento do navegador.');}
 }
 async function restorePurchaseBackup(input){
-  const file=input.files[0];
-  if(!file) return;
+  const file=input.files[0];if(!file)return;
   try{
-    const entries=validatePurchaseBackup(JSON.parse(await file.text()));
+    const {entries,items}=validatePurchaseBackup(JSON.parse(await file.text()));
+    if(!shoppingWritable)throw Error('Armazenamento indisponível');
+    const merged=new Map(shoppingItems.map(item=>[item.id,item]));
+    items.forEach(item=>{
+      const current=merged.get(item.id);
+      merged.set(item.id,current?{...current,quantity:Math.max(current.quantity,item.quantity),bought:Math.max(current.bought,item.bought)}:item);
+    });
+    // Validate everything first; write the editable list as one atomic storage entry.
+    const checked=validShoppingItems([...merged.values()]);
     entries.forEach(([key,value])=>{
       const current=Number(localStorage.getItem(key)||0);
       localStorage.setItem(key,String(Math.max(Number.isSafeInteger(current)&&current>=0?current:0,value)));
     });
-    document.querySelectorAll(".buy-row").forEach(renderBuyRow);
-    document.querySelectorAll(".buy-card").forEach(updateBuySummary);
-    purchaseStatus("Backup restaurado. As quantidades já registradas foram preservadas, sem somar compras duplicadas.");
-  }catch(error){
-    purchaseStatus("Não foi possível concluir a restauração. Use um backup de compras deste site e verifique se o navegador permite salvar dados.");
-  }finally{input.value="";}
+    if(!persistShopping(checked))return;
+    resetShoppingForm();
+    shopStatus(items.length?'Backup restaurado, preservando as compras já registradas.':'Registros antigos restaurados no backup. A nova lista continua sendo preenchida por você.');
+  }catch(error){shopStatus('Não foi possível restaurar. Confira o arquivo de backup e o armazenamento do navegador.');}
+  finally{input.value='';}
 }
-function renderBuyRow(row){
-  const need=Number(row.dataset.need);
-  let have=Number(localStorage.getItem("pokemonTCG_buy_"+row.dataset.key)||0);
-  have=Math.max(0,Math.min(need,have));
-  row.querySelector(".qty-status").textContent=have+"/"+need;
-  row.classList.toggle("complete",have>=need);
-}
-function setBuyQty(btn,delta){
-  const row=btn.closest(".buy-row"), need=Number(row.dataset.need);
-  let have=Number(localStorage.getItem("pokemonTCG_buy_"+row.dataset.key)||0);
-  have=Math.max(0,Math.min(need,have+delta));
+function initShopping(){
   try{
-    localStorage.setItem(PURCHASE_PREFIX+row.dataset.key,String(have));
-    purchaseStatus("Compras salvas neste navegador. Você também pode baixar um backup.");
-  }catch(error){
-    purchaseStatus("Esta compra não foi salva. Verifique se o navegador permite salvar dados deste site.");
-    return;
-  }
-  renderBuyRow(row); updateBuySummary(row.closest(".buy-card"));
-}
-function updateBuySummary(card){
-  let have=0,need=0;
-  card.querySelectorAll(".buy-row").forEach(row=>{
-    const n=Number(row.dataset.need);
-    const h=Math.max(0,Math.min(n,Number(localStorage.getItem("pokemonTCG_buy_"+row.dataset.key)||0)));
-    have+=h; need+=n;
+    const stored=localStorage.getItem(SHOPPING_KEY);
+    shoppingItems=stored===null?[]:validShoppingItems(JSON.parse(stored));
+  }catch(error){shoppingWritable=false;shopStatus('Não foi possível ler a lista salva. Os dados foram mantidos; baixe um backup antes de tentar recuperá-los.');}
+  const suggestions=new Set([...document.querySelectorAll('.deck-row .name')].map(node=>node.textContent.trim()));
+  const datalist=shopElement('shopping-suggestions');
+  suggestions.forEach(name=>{const option=shopNode('option');option.value=name;datalist.appendChild(option);});
+  shopElement('shopping-form').addEventListener('submit',saveShoppingForm);
+  shopElement('shopping-name').addEventListener('input',updateLigaSearch);
+  shopElement('shopping-liga-search').addEventListener('click',event=>{
+    if(!shopElement('shopping-name').value.trim()){event.preventDefault();shopElement('shopping-name').focus();shopStatus('Digite o nome da carta para pesquisar na Liga.');}
   });
-  card.querySelector(".buy-summary").textContent="Compradas: "+have+" de "+need+" cartas";
+  shopElement('shopping-cancel').addEventListener('click',resetShoppingForm);
+  renderShopping();updateLigaSearch();
 }
-document.addEventListener("DOMContentLoaded",()=>{
-  document.querySelectorAll(".buy-row").forEach(renderBuyRow);
-  document.querySelectorAll(".buy-card").forEach(updateBuySummary);
-});
+document.addEventListener('DOMContentLoaded',initShopping);
+
 </script>
 </body>
 </html>
