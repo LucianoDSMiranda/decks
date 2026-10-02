@@ -40,3 +40,9 @@ O botão Copiar para o Live mantém sigla e número no texto exportado, conforme
 ## Lista solicitada em 02/10/2026
 
 A revisão 2026-10-02-lista-1 substitui a lista anterior uma única vez em cada navegador. A chave existente armazena agora um objeto com revision e items, gravados juntos; listas antigas em array continuam sendo lidas. Atualizações futuras devem manter a revisão, salvo pedido explícito de substituição. Edições, compras, remoções e até uma lista esvaziada pelo usuário são preservadas nos próximos carregamentos. Os backups continuam usando shoppingItems como array.
+
+## Links diretos da Liga
+
+As 11 cartas solicitadas têm edições de arte comum verificadas na Liga Pokémon, com ofertas em português. A busca e os nomes na lista abrem a edição exata quando nome e número correspondem ao catálogo; outras edições continuam usando a pesquisa. Idioma e acabamento são selecionados na Liga, conforme a oferta. Preços continuam manuais.
+
+A atualização preenche apenas números vazios dos itens originais com nome correspondente, mantendo a revisão existente, quantidades, compras, preços, alterações e remoções. Não recria itens excluídos.
