@@ -64,3 +64,9 @@ A revisão `2026-10-02-dragapult-zoroark-alvos-1` adiciona essa diferença uma v
 Registradas as sete entradas e sete saídas informadas: sai a linha Duskull (5 cartas), 1 Ultra Bola e 1 Torre de Vigia da Equipe Rocket; entram 1 Budew, 1 Dunsparce, 1 Dudunsparce, 1 Ruínas Arriscadas, 1 Juiz e 2 Martelo Esmagador. O atual fica em 19 Pokémon, 33 Treinadores e 8 Energias. Faltam 1 Munkidori, 2 Martelo Esmagador e 1 Ruínas Arriscadas para o alvo.
 
 A revisão `2026-10-02-dragapult-troca-7-1` marca os itens originais da troca como adquiridos uma vez, usando o maior entre o progresso existente e o informado, limitado à quantidade do item. Preserva preços, remoções e as compras do Zoroark. Os itens adquiridos continuam no histórico da lista; totais pendentes e cópia descontam essas cartas.
+
+## Decks concluídos em 03/10/2026
+
+Dragapult promovido à lista-alvo completa (20/32/8). Zoroark atualizado para a lista final (17/35/8), com 2 Cyrano e 2 Juiz. Ambos estão prontos; os alvos e comparativos concluídos foram retirados das seções de pendências. Alakazam continua em alteração.
+
+A revisão `2026-10-03-decks-concluidos-1` registra as cartas das duas transições como adquiridas uma única vez. A necessidade original de Cyrano cai de 2 para 1 e a de Juiz aumenta de 1 para 2. Itens são reconhecidos por ID, nome e edição; preços, compras extras, itens personalizados e remoções são preservados. O histórico fica visível e a cópia considera apenas quantidades ainda pendentes.
